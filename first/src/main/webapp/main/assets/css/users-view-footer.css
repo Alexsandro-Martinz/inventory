@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+button, img {
+	margin: 0;
+	padding: 0;
+}
+
+.footer-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+.input-search {
+	height: 30px;
+	border: solid 1px gray;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-left: 10px;
+	font-size: 18px;
+	outline: none;
+}
+
+.btn-search {
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: -1px;
+	padding: 0px 3px;
+	border: solid 1px gray;
+	
+	border-radius: 0px 5px 5px 0px;
+	
+	}

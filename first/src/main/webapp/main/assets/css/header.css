@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.header {
+	background: linear-gradient(120deg, rgba(34, 193, 195, 1) 0%,
+			rgba(253, 187, 45, 1) 100%);
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30px;
+	position: fixed;
+	align-items: center;
+}
+
+.header img {
+	height: 20px;
+}
+
+.header-center {
+	display: flex;
+}
+
+.header-center a {
+	text-decoration: none;
+	font-weight: 500;
+	color: black;
+	font-size: 20px;
+	padding: 0 10px;
+}
+
+.header-center a:hover {
+	text-shadow: 1px 1px 1px white;
+} 
+
+
+.header-right {
+	display: flex;
+}
+
+.header-username {
+	font-size: 18px;
+	text-transform: capitalize;
+	margin-right: 20px;
+	text-shadow: 1px 1px 4px ghostwhite;
+}
+
+.logout-icon-container {
+	position: relative;
+	transition: opacity 0.15s;
+}
+
+.logout-icon-container:hover .logout-tooltip {
+	opacity: 1;
+}
+
+.logout-tooltip {
+	position: absolute;
+	left: -20px;
+	bottom: -40px;
+	background-color: rgba(34, 193, 195, 1);
+	padding: 5px;
+	border-radius: 5px;
+	opacity: 0;
+	pointer-events: none;
+}
