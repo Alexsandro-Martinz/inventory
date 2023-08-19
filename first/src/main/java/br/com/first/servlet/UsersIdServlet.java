@@ -14,26 +14,25 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/main/users/*")
 public class UsersIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		Scanner scan = new Scanner(req.getInputStream(), StandardCharsets.UTF_8);
-		if(scan.hasNext()) {
+		if (scan.hasNext()) {
 			String body = scan.useDelimiter("\\A").next();
-			
+
 			User user = new Gson().fromJson(body, User.class);
 			new UserDao().update(user);
 		}
 	}
-	
+
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		Long id = Long.parseLong(req.getPathInfo().replace("/", ""));
 		new UserDao().delete(id);
 	}

@@ -14,7 +14,7 @@ public class RegisterForm {
 		if (username == null || username.isEmpty()) {
 			return false;
 		}
-		
+
 		if (password == null || password.isEmpty()) {
 			return false;
 		} else {
@@ -61,16 +61,16 @@ public class RegisterForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public User getUser() {
 		User user = new User();
-		
+
 		user.setFirstName(fname);
 		user.setLastName(lname);
 		user.setEmail(email);
 		user.setUsername(username);
 		user.setPassword(password);
-		
+
 		return user;
 	}
 

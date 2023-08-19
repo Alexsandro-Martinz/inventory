@@ -10,7 +10,7 @@ public class User {
 	private Boolean admin;
 	private String firstName;
 	private String lastName;
-	
+
 	public Boolean isAdmin() {
 		return admin;
 	}

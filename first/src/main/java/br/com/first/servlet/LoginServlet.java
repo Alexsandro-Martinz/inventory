@@ -21,7 +21,6 @@ public class LoginServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -40,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 
 			UserDao userDao = new UserDao();
 			User user = userDao.authenticate(login);
-			
+
 			if (user != null) {
 
 				HttpSession session = request.getSession();
@@ -49,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				String url = request.getParameter("url");
 
 				url = url.equalsIgnoreCase("") ? "/main/home.jsp" : url;
-				
+
 				request.getRequestDispatcher(url).forward(request, response);
 			} else {
 				request.setAttribute("message", "Credentials not founded.");

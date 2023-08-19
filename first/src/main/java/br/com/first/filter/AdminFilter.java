@@ -13,8 +13,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
-@WebFilter(urlPatterns = {"/main/adm/*", "/main/users/*", "/main/users"})
+@WebFilter(urlPatterns = { "/main/adm/*", "/main/users/*", "/main/users" })
 public class AdminFilter extends HttpFilter implements Filter {
 
 	private static final long serialVersionUID = 1L;

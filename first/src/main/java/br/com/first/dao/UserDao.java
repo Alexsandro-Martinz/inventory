@@ -71,7 +71,7 @@ public class UserDao {
 	public User authenticate(LoginModel loginModel) {
 
 		String sql = "SELECT * FROM users WHERE username= LOWER(?) and passwd = LOWER(?)";
-		
+
 		User user = null;
 
 		try {
@@ -81,7 +81,7 @@ public class UserDao {
 			stm.setString(2, loginModel.getPassword());
 
 			ResultSet result = stm.executeQuery();
-			if(result.next()) {
+			if (result.next()) {
 				user = new User();
 				user.setId(result.getLong("id"));
 				user.setEmail(result.getString("email"));
@@ -171,7 +171,7 @@ public class UserDao {
 
 	public List<User> searchByUsername(String firstName) {
 		List<User> users = new ArrayList<>();
-		String sql = "SELECT * FROM users WHERE first_name like '%"+firstName+"%' and is_admin is false";
+		String sql = "SELECT * FROM users WHERE first_name like '%" + firstName + "%' and is_admin is false";
 		PreparedStatement stm = null;
 
 		try {
