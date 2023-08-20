@@ -10,6 +10,15 @@ public class User {
 	private Boolean admin;
 	private String firstName;
 	private String lastName;
+	private Photo photo;
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
 
 	public Boolean isAdmin() {
 		return admin;
@@ -38,7 +47,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", admin=" + admin + ", firstName="
-				+ firstName + ", lastName=" + lastName + "]";
+				+ firstName + ", lastName=" + lastName + ", photo=" + photo + "]";
 	}
 
 	public void setId(Long id) {
