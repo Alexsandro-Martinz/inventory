@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"
-	isELIgnored="false"%>
-
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,6 +81,7 @@
 		</div>
 
 	</footer>
+	<jsp:include page="/main/assets/jsp/scriptsJquery.jsp"></jsp:include>
 	<script type="text/javascript">
 
 var usersTable = document.getElementById("users");
@@ -162,11 +161,14 @@ function closeModal(){
 
 async function fillTable(data){
 		const tr = usersTable.insertRow();
-		let header = "<th>Id</th>";
+		let header = "<th>Id</th>"
+		header = header + "<th>Photo</th>";
 		header = header + "<th>Username</th>";
 		header = header + "<th>First Name</th>";
 		header = header + "<th>Last Name</th>";
 		header = header + "<th>Email</th>";
+		header = header + "<th>Update</th>";
+		header = header + "<th>Delete</th>";
 		tr.innerHTML = header;
 	
 	JSON.parse(data).forEach((user) => {
@@ -188,7 +190,12 @@ async function fillTable(data){
 		})
 		
 		const tr = usersTable.insertRow();
+		let img = document.createElement('img');
+		img.src = user.photo;
+		img.alt = "photo";
+		
 		tr.insertCell().appendChild(document.createTextNode(user.id));
+		tr.insertCell().appendChild(img);
 		tr.insertCell().appendChild(document.createTextNode(user.username));
 		tr.insertCell().appendChild(document.createTextNode(user.firstName));
 		tr.insertCell().appendChild(document.createTextNode(user.lastName));
@@ -208,14 +215,10 @@ async function loadUsersFromSearch(){
 }
 
 
-async function loadAllUsers (){
-	const url = "<%=request.getContextPath()%>/main/users";
-	$.get(url, (data) => fillTable(data));
-}
-
-loadAllUsers();
+loadUsersFromSearch();
 
 
 </script>
+
 </body>
 </html>

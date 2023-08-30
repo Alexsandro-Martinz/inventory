@@ -42,6 +42,16 @@ public class UserDao {
 			sql += " email='" + email + "',";
 		}
 
+		String photo = user.getPhoto();
+		if (photo != null && !photo.isEmpty()) {
+			sql += " email='" + photo + "',";
+		}
+
+		String photoExtension = user.getPhotoExtension();
+		if (photoExtension != null && !photoExtension.isEmpty()) {
+			sql += " email='" + photoExtension + "',";
+		}
+
 		sql = sql.substring(0, sql.length() - 1);
 
 		sql += " WHERE id=" + user.getId() + " and is_admin is false";
@@ -89,6 +99,8 @@ public class UserDao {
 				user.setLastName(result.getString("last_name"));
 				user.setUsername(result.getString("username"));
 				user.setAdmin(result.getBoolean("is_admin"));
+				user.setPhoto(result.getString("photo"));
+				user.setPhotoExtension(result.getString("photo_extension"));
 
 			}
 
@@ -105,9 +117,9 @@ public class UserDao {
 
 	public Long insert(User user) {
 		Long id = null;
-		String sql = "INSERT INTO users(username, passwd, first_name, last_name, email)"
-				+ " VALUES (LOWER(?), LOWER(?), LOWER(?), LOWER(?), LOWER(?))" + " ON CONFLICT (username) DO NOTHING"
-				+ " RETURNING id";
+		String sql = "INSERT INTO users(username, passwd, first_name, last_name, email, photo, photo_extension)"
+				+ " VALUES (LOWER(?), LOWER(?), LOWER(?), LOWER(?), LOWER(?), ?, ?)"
+				+ " ON CONFLICT (username) DO NOTHING" + " RETURNING id";
 
 		try (PreparedStatement stm = connection.prepareStatement(sql)) {
 
@@ -116,6 +128,8 @@ public class UserDao {
 			stm.setString(3, user.getFirstName());
 			stm.setString(4, user.getLastName());
 			stm.setString(5, user.getEmail());
+			stm.setString(6, user.getPhoto());
+			stm.setString(7, user.getPhotoExtension());
 
 			ResultSet result = stm.executeQuery();
 
@@ -138,10 +152,8 @@ public class UserDao {
 	public List<User> userList() {
 		List<User> users = new ArrayList<>();
 		String sql = "SELECT * FROM users WHERE is_admin is false";
-		PreparedStatement stm = null;
 
-		try {
-			stm = connection.prepareStatement(sql);
+		try (PreparedStatement stm = connection.prepareStatement(sql)) {
 			ResultSet result = stm.executeQuery();
 
 			while (result.next()) {
@@ -152,18 +164,14 @@ public class UserDao {
 				user.setFirstName(result.getString("first_name"));
 				user.setLastName(result.getString("last_name"));
 				user.setUsername(result.getString("username"));
+				user.setPhoto(result.getString("photo"));
+				user.setPhotoExtension(result.getString("photo_extension"));
 
 				users.add(user);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				stm.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 		return users;
@@ -172,10 +180,8 @@ public class UserDao {
 	public List<User> searchByUsername(String firstName) {
 		List<User> users = new ArrayList<>();
 		String sql = "SELECT * FROM users WHERE first_name like '%" + firstName + "%' and is_admin is false";
-		PreparedStatement stm = null;
 
-		try {
-			stm = connection.prepareStatement(sql);
+		try (PreparedStatement stm = connection.prepareStatement(sql)) {
 			ResultSet result = stm.executeQuery();
 
 			while (result.next()) {
@@ -192,15 +198,8 @@ public class UserDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				stm.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
 		}
-		return users;
+		return users; 
 
 	}
 }

@@ -10,14 +10,14 @@ public class User {
 	private Boolean admin;
 	private String firstName;
 	private String lastName;
-	private Photo photo;
+	private String photo;
+	private String photoExtension;
 
-	public Photo getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Photo photo) {
-		this.photo = photo;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", admin=" + admin + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", photo=" + photo + ", photoExtension=" + photoExtension
+				+ "]";
 	}
 
 	public Boolean isAdmin() {
@@ -42,12 +42,6 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", admin=" + admin + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", photo=" + photo + "]";
 	}
 
 	public void setId(Long id) {
@@ -101,6 +95,22 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhotoExtension() {
+		return photoExtension;
+	}
+
+	public void setPhotoExtension(String photoExtension) {
+		this.photoExtension = photoExtension;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 }

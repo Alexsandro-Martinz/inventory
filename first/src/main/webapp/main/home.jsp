@@ -17,9 +17,10 @@
 
 	<jsp:include page="assets/jsp/header.jsp"></jsp:include>
 
-
 	<main class="container">
 		<h1 class="title">Home page welcome</h1>
 	</main>
+	
+	<jsp:include page="/main/assets/jsp/scriptsJquery.jsp"></jsp:include>
 </body>
 </html>

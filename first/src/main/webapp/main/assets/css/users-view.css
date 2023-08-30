@@ -30,8 +30,10 @@ tr:nth-child(even){
 }
 
 .users img {
-	height: 24px;
-	padding: 1px;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	object-fit: cover;
 }
 
 .users img:hover {

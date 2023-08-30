@@ -14,7 +14,7 @@
 		</div>
 
 		<c:if test="${user.admin}">
-			
+
 			<div>
 				<a id="users-view.jsp"
 					href="<%=request.getContextPath()%>/main/adm/users-view.jsp">
@@ -42,13 +42,10 @@
 	<script type="text/javascript">
 	(function() {
 		
-		let path = '<%=request.getServletPath()%>
-		';
+		let path = '<%=request.getServletPath()%>';
 			let current = path.split("/").pop();
 			let element = document.getElementById(current);
 			element.style = "text-shadow: 1px 1px 2px black; color: white;";
 		})();
 	</script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </header>
