@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+td,tr, th, table {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.title {
+	padding-bottom: 10px;
+}
+
+.users {
+	border-collapse: collapse;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	height: 20px;
+}
+
+tr:nth-child(even){
+	background-color: rgba(253, 187, 45, 1);
+}
+
+.users img {
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	object-fit: cover;
+}
+
+.users img:hover {
+	opacity: 0.6;
+}
+
+.users img:active {
+	height: 23px;
+}

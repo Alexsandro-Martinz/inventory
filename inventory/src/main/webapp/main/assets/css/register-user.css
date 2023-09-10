@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body {
+	display: flex;
+	justify-content: center;
+	background: white;
+}
+
+.save-btn-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.save-btn {
+	padding: 10px 50px;
+	width: 200px;
+}
+
+.msg {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: red;
+	font-size: 18px;
+	height: 10px;
+}
+
+.photo-view {
+	display: flex;
+	height: 50px;
+	width: 50px;
+	object-fit: couver;
+	border-radius: 30px;
+	margin-right: 5px;
+}
+
+.photo-input-container {
+	display: flex;
+	align-items: center;
